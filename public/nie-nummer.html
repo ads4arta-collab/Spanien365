@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIE Nummer beantragen – spanien365.de</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brown: #2C2416;
+      --cream: #F7F1E8;
+      --sand: #EDE3D4;
+      --terra: #C0622B;
+      --gold: #D4A96A;
+      --muted: #9a7e62;
+      --border: #D4C4A8;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); }
+
+    /* NAV */
+    nav { background: var(--brown); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--terra); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--cream); padding: 14px 0; text-decoration: none; }
+    .nav-logo span { color: var(--terra); }
+    .nav-back { font-size: 12px; color: rgba(247,241,232,0.6); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--cream); }
+
+    /* HERO */
+    .hero { background: var(--brown); padding: 40px 20px 36px; }
+    .hero-tag { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 6vw, 42px); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 14px; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p { font-size: 15px; color: rgba(247,241,232,.7); line-height: 1.6; max-width: 520px; }
+
+    /* STEPS */
+    .steps { background: var(--sand); padding: 20px; display: flex; gap: 0; align-items: center; overflow-x: auto; }
+    .step { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: rgba(44,36,22,.4); white-space: nowrap; }
+    .step.active { color: var(--terra); }
+    .step-num { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+    .step.active .step-num { background: var(--terra); border-color: var(--terra); color: var(--cream); }
+    .step-line { flex: 1; min-width: 20px; height: 1px; background: var(--gold); margin: 0 8px; opacity: .4; }
+
+    /* FORM */
+    .form-wrap { max-width: 560px; margin: 0 auto; padding: 32px 20px 48px; }
+    .form-section { margin-bottom: 28px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--brown); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1.5px solid var(--gold); }
+
+    .row { display: grid; gap: 12px; margin-bottom: 14px; }
+    .cols2 { grid-template-columns: 1fr 1fr; }
+    .cols3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 480px) { .cols2, .cols3 { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    label { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+    label .req { color: var(--terra); margin-left: 2px; }
+    input, select { background: #fff; border: 1.5px solid var(--border); padding: 10px 12px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--brown); outline: none; border-radius: 0; width: 100%; }
+    input:focus, select:focus { border-color: var(--terra); }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23C0622B'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
+    .hint { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    /* DOC TOGGLE */
+    .doc-toggle { display: flex; border: 1.5px solid var(--border); overflow: hidden; margin-bottom: 12px; }
+    .doc-btn { flex: 1; padding: 10px 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; background: #fff; border: none; cursor: pointer; color: var(--muted); transition: all .15s; }
+    .doc-btn.active { background: var(--terra); color: var(--cream); }
+    .doc-btn:first-child { border-right: 1px solid var(--border); }
+
+    /* RADIO */
+    .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .radio { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .radio input[type=radio] { accent-color: var(--terra); width: 15px; height: 15px; cursor: pointer; }
+    .radio span { font-size: 13px; }
+
+    /* PARENT BLOCK */
+    .parent-block { background: #fff; border: 1.5px solid var(--border); padding: 14px 14px 10px; margin-bottom: 14px; }
+    .parent-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--terra); margin-bottom: 10px; }
+
+    /* INFO BOX */
+    .info-box { background: var(--sand); border-left: 3px solid var(--gold); padding: 14px 16px; margin-bottom: 24px; }
+    .info-box p { font-size: 13px; color: #5a4a38; line-height: 1.6; }
+    .info-box strong { color: var(--brown); }
+
+    /* FIXED BOX */
+    .fixed-box { background: var(--sand); border: 1.5px solid var(--gold); padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+    .fixed-box-icon { font-size: 18px; color: var(--terra); flex-shrink: 0; margin-top: 2px; }
+    .fixed-box-text { font-size: 13px; color: var(--brown); line-height: 1.5; }
+    .fixed-box-text strong { font-weight: 600; }
+
+    /* SUBMIT */
+    .price-box { background: var(--brown); padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .price-label { font-size: 12px; color: rgba(247,241,232,.65); }
+    .price-sub { font-size: 10px; color: rgba(247,241,232,.4); margin-top: 2px; }
+    .price-amount { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--gold); }
+    .btn-submit { width: 100%; background: var(--terra); color: var(--cream); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 16px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .btn-submit:hover { background: #a35224; }
+    .btn-submit:disabled { background: var(--muted); cursor: not-allowed; }
+    .legal { font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 12px; text-align: center; }
+
+    /* ERROR */
+    .error-msg { font-size: 12px; color: #c0392b; margin-top: 4px; display: none; }
+    input.error, select.error { border-color: #c0392b; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Spanien<span>365</span></a>
+  <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">NIE Nummer Service</div>
+  <h1>Dein NIE-Antrag –<br><em>fertig ausgefüllt.</em></h1>
+  <p>Gib deine Daten ein, wir befüllen beide Formulare (EX-15 + Modelo 790-012) und schicken sie dir sofort nach der Zahlung per E-Mail.</p>
+</div>
+
+<div class="steps">
+  <div class="step active">
+    <div class="step-num">1</div>
+    Deine Daten
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-num">2</div>
+    Zahlung (29 €)
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-num">3</div>
+    Formulare per Mail
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form id="nie-form" novalidate>
+
+    <!-- PERSÖNLICHE DATEN -->
+    <div class="form-section">
+      <div class="section-title">Persönliche Daten</div>
+
+      <div class="row">
+        <div class="field">
+          <label>Ausweisdokument<span class="req">*</span></label>
+          <div class="doc-toggle">
+            <button type="button" class="doc-btn active" id="btn-pass" onclick="switchDoc('reisepass')">Reisepass</button>
+            <button type="button" class="doc-btn" id="btn-ausweis" onclick="switchDoc('personalausweis')">Personalausweis</button>
+          </div>
+          <input type="hidden" id="docType" value="reisepass">
+          <input type="text" id="docNumber" name="docNumber" placeholder="Reisepassnummer" required autocomplete="off">
+          <div class="hint" id="doc-hint">Exakt wie im Reisepass angegeben</div>
+          <div class="error-msg" id="docNumber-err">Bitte Dokumentnummer eingeben</div>
+        </div>
+      </div>
+
+      <div class="row cols2">
+        <div class="field">
+          <label>1. Nachname<span class="req">*</span></label>
+          <input type="text" id="lastName1" required placeholder="Müller">
+          <div class="error-msg" id="lastName1-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>2. Nachname</label>
+          <input type="text" id="lastName2" placeholder="falls vorhanden">
+        </div>
+      </div>
+
+      <div class="row cols2">
+        <div class="field">
+          <label>Vorname<span class="req">*</span></label>
+          <input type="text" id="firstName" required placeholder="Anna">
+          <div class="error-msg" id="firstName-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>Geschlecht<span class="req">*</span></label>
+          <select id="sex" required>
+            <option value="">Bitte wählen</option>
+            <option value="H">Männlich (H)</option>
+            <option value="M">Weiblich (M)</option>
+            <option value="X">Divers (X)</option>
+          </select>
+          <div class="error-msg" id="sex-err">Bitte wählen</div>
+        </div>
+      </div>
+
+      <div class="row cols3">
+        <div class="field">
+          <label>Geburtsdatum<span class="req">*</span></label>
+          <input type="text" id="birthDate" required placeholder="TT/MM/JJJJ">
+          <div class="error-msg" id="birthDate-err">Format: TT/MM/JJJJ</div>
+        </div>
+        <div class="field">
+          <label>Geburtsort<span class="req">*</span></label>
+          <input type="text" id="birthPlace" required placeholder="Berlin">
+          <div class="error-msg" id="birthPlace-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>Geburtsland<span class="req">*</span></label>
+          <input type="text" id="birthCountry" required placeholder="Deutschland">
+          <div class="error-msg" id="birthCountry-err">Pflichtfeld</div>
+        </div>
+      </div>
+
+      <div class="row cols2">
+        <div class="field">
+          <label>Nationalität<span class="req">*</span></label>
+          <input type="text" id="nationality" required placeholder="Deutsch">
+          <div class="error-msg" id="nationality-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>Familienstand<span class="req">*</span></label>
+          <select id="maritalStatus" required>
+            <option value="">Bitte wählen</option>
+            <option value="S">Ledig (S)</option>
+            <option value="C">Verheiratet (C)</option>
+            <option value="V">Verwitwet (V)</option>
+            <option value="D">Geschieden (D)</option>
+            <option value="Sp">Getrennt (Sp)</option>
+          </select>
+          <div class="error-msg" id="maritalStatus-err">Bitte wählen</div>
+        </div>
+      </div>
+
+      <div class="parent-block">
+        <div class="parent-label">Vater</div>
+        <div class="row cols2" style="margin-bottom:0">
+          <div class="field">
+            <label>Vorname<span class="req">*</span></label>
+            <input type="text" id="fatherFirstName" required placeholder="Hans">
+          </div>
+          <div class="field">
+            <label>Nachname<span class="req">*</span></label>
+            <input type="text" id="fatherLastName" required placeholder="Müller">
+          </div>
+        </div>
+      </div>
+
+      <div class="parent-block">
+        <div class="parent-label">Mutter</div>
+        <div class="row cols2" style="margin-bottom:0">
+          <div class="field">
+            <label>Vorname<span class="req">*</span></label>
+            <input type="text" id="motherFirstName" required placeholder="Maria">
+          </div>
+          <div class="field">
+            <label>Nachname<span class="req">*</span></label>
+            <input type="text" id="motherLastName" required placeholder="Schmidt">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADRESSE -->
+    <div class="form-section">
+      <div class="section-title">Wohnadresse in Spanien</div>
+
+      <div class="row cols2">
+        <div class="field" style="grid-column:1/2">
+          <label>Straße<span class="req">*</span></label>
+          <input type="text" id="street" required placeholder="Calle Mayor">
+          <div class="error-msg" id="street-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>Hausnr.</label>
+          <input type="text" id="streetNumber" placeholder="12">
+        </div>
+      </div>
+
+      <div class="row cols3">
+        <div class="field">
+          <label>Ort<span class="req">*</span></label>
+          <input type="text" id="city" required placeholder="Palma">
+          <div class="error-msg" id="city-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>PLZ<span class="req">*</span></label>
+          <input type="text" id="postalCode" required placeholder="07001">
+          <div class="error-msg" id="postalCode-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>Provinz<span class="req">*</span></label>
+          <input type="text" id="province" required placeholder="Baleares">
+          <div class="error-msg" id="province-err">Pflichtfeld</div>
+        </div>
+      </div>
+
+      <div class="row cols2">
+        <div class="field">
+          <label>Telefon<span class="req">*</span></label>
+          <input type="tel" id="phone" required placeholder="+34 612 345 678">
+          <div class="error-msg" id="phone-err">Pflichtfeld</div>
+        </div>
+        <div class="field">
+          <label>E-Mail<span class="req">*</span></label>
+          <input type="email" id="email" required placeholder="anna@email.de">
+          <div class="hint">Formulare werden hierhin geschickt</div>
+          <div class="error-msg" id="email-err">Gültige E-Mail eingeben</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANTRAG DETAILS -->
+    <div class="form-section">
+      <div class="section-title">Antrag – Details</div>
+
+      <div class="row">
+        <div class="field">
+          <label>Grund des Antrags<span class="req">*</span></label>
+          <select id="reason" required>
+            <option value="">Bitte wählen</option>
+            <option value="Wirtschaftliche Interessen">Wirtschaftliche Interessen (Immobilie, Konto etc.)</option>
+            <option value="Berufliche Interessen">Berufliche Interessen (Arbeit, Selbständigkeit)</option>
+            <option value="Soziale Interessen">Soziale Interessen (Familienzusammenführung etc.)</option>
+          </select>
+          <div class="error-msg" id="reason-err">Bitte wählen</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Aufenthaltsstatus in Spanien<span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio">
+              <input type="radio" name="status" value="estancia">
+              <span>Vorübergehend (Estancia)</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="status" value="residencia">
+              <span>Wohnsitz (Residencia)</span>
+            </label>
+          </div>
+          <div class="hint" style="margin-top:6px">Estancia = unter 3 Monate / Residencia = dauerhaft</div>
+          <div class="error-msg" id="status-err">Bitte auswählen</div>
+        </div>
+      </div>
+
+      <div class="fixed-box">
+        <div class="fixed-box-icon">🏢</div>
+        <div class="fixed-box-text">
+          <strong>Einreichungsort: Oficina de Extranjería</strong><br>
+          Dein Formular wird für die Ausländerbehörde vorbereitet – der empfohlene Weg für NIE-Anträge.
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO + SUBMIT -->
+    <div class="info-box">
+      <p><strong>Was passiert nach der Zahlung?</strong><br>
+      Du erhältst innerhalb weniger Minuten zwei fertig ausgefüllte PDFs per Mail: das <strong>EX-15</strong> Antragsformular und das <strong>Modelo 790-012</strong> Gebührenformular (9,84 €, bei der Bank zu bezahlen). Beide ausdrucken, unterschreiben und zum Termin mitbringen.</p>
+    </div>
+
+    <div class="price-box">
+      <div>
+        <div class="price-label">Servicegebühr spanien365.de</div>
+        <div class="price-sub">Behördengebühr (9,84 €) separat bei der Bank</div>
+      </div>
+      <div class="price-amount">29,00 €</div>
+    </div>
+
+    <button type="submit" class="btn-submit" id="submit-btn">
+      🔒 Sicher bezahlen & Formulare erhalten
+    </button>
+    <div class="legal">
+      Mit der Zahlung akzeptierst du unsere AGB. Deine Daten werden ausschließlich zur Formularerstellung verwendet und danach gelöscht.
+    </div>
+
+  </form>
+</div>
+
+<script>
+  const stripe = Stripe('pk_test_51ThD07EB10jfr3OTaChFNQdOsgfE6LoygYqmlWTppjNTTA7FUchGXs2qgnVo5GDZHCRrjbDV2DLcinKL3r8buXS300eNW3iwjF');
+
+  function switchDoc(type) {
+    document.getElementById('docType').value = type;
+    const btnPass = document.getElementById('btn-pass');
+    const btnAusweis = document.getElementById('btn-ausweis');
+    const input = document.getElementById('docNumber');
+    const hint = document.getElementById('doc-hint');
+    if (type === 'reisepass') {
+      btnPass.classList.add('active');
+      btnAusweis.classList.remove('active');
+      input.placeholder = 'Reisepassnummer eingeben';
+      hint.textContent = 'Exakt wie im Reisepass angegeben';
+    } else {
+      btnAusweis.classList.add('active');
+      btnPass.classList.remove('active');
+      input.placeholder = 'Personalausweisnummer eingeben';
+      hint.textContent = 'Exakt wie auf dem Personalausweis angegeben';
+    }
+    input.value = '';
+    input.focus();
+  }
+
+  function getVal(id) {
+    return document.getElementById(id)?.value?.trim() || '';
+  }
+
+  function showError(id, show) {
+    const el = document.getElementById(id + '-err');
+    const input = document.getElementById(id);
+    if (el) el.style.display = show ? 'block' : 'none';
+    if (input) input.classList.toggle('error', show);
+  }
+
+  function validate() {
+    const required = ['docNumber','lastName1','firstName','sex','birthDate','birthPlace','birthCountry','nationality','maritalStatus','fatherFirstName','fatherLastName','motherFirstName','motherLastName','street','city','postalCode','province','phone','email','reason'];
+    let valid = true;
+    required.forEach(id => {
+      const val = getVal(id);
+      const empty = !val;
+      showError(id, empty);
+      if (empty) valid = false;
+    });
+    // email format
+    const email = getVal('email');
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('email', true);
+      valid = false;
+    }
+    // radio status
+    const status = document.querySelector('input[name="status"]:checked');
+    const statusErr = document.getElementById('status-err');
+    if (!status) {
+      if (statusErr) statusErr.style.display = 'block';
+      valid = false;
+    } else {
+      if (statusErr) statusErr.style.display = 'none';
+    }
+    return valid;
+  }
+
+  document.getElementById('nie-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validate()) {
+      document.querySelector('.error, .error-msg[style*="block"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Weiterleitung zu Stripe...';
+
+    const formData = {
+      docType: getVal('docType'),
+      docNumber: getVal('docNumber'),
+      lastName1: getVal('lastName1'),
+      lastName2: getVal('lastName2'),
+      firstName: getVal('firstName'),
+      sex: getVal('sex'),
+      birthDate: getVal('birthDate'),
+      birthPlace: getVal('birthPlace'),
+      birthCountry: getVal('birthCountry'),
+      nationality: getVal('nationality'),
+      maritalStatus: getVal('maritalStatus'),
+      fatherFirstName: getVal('fatherFirstName'),
+      fatherLastName: getVal('fatherLastName'),
+      motherFirstName: getVal('motherFirstName'),
+      motherLastName: getVal('motherLastName'),
+      street: getVal('street'),
+      streetNumber: getVal('streetNumber'),
+      city: getVal('city'),
+      postalCode: getVal('postalCode'),
+      province: getVal('province'),
+      phone: getVal('phone'),
+      email: getVal('email'),
+      reason: getVal('reason'),
+      status: document.querySelector('input[name="status"]:checked')?.value || '',
+    };
+
+    try {
+      const res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Unbekannter Fehler');
+      }
+    } catch (err) {
+      alert('Fehler: ' + err.message);
+      btn.disabled = false;
+      btn.textContent = '🔒 Sicher bezahlen & Formulare erhalten';
+    }
+  });
+</script>
+
+</body>
+</html>
