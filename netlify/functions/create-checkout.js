@@ -32,8 +32,8 @@ exports.handler = async (event) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.URL}/danke.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.URL}/nie-nummer.html`,
+      success_url: `${process.env.SITE_URL}/danke.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.SITE_URL}/nie-nummer.html`,
       customer_email: formData.email,
       metadata: {
         docType: formData.docType || "reisepass",
