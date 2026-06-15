@@ -103,9 +103,20 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Spanien<span>365</span></a>
-  <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Spanien<span>365</span></a>
+    <div id="nav-menu" class="nav-menu">
+      <a href="index.html#auswanderung">Auswandern</a>
+      <a href="nie-nummer.html">NIE Nummer</a>
+      <a href="index.html#themen">Bürokratie</a>
+      <a href="index.html#themen">Selbständig</a>
+      <a href="index.html#themen">Leben in Spanien</a>
+      <a href="nie-nummer.html" class="nav-menu-cta">NIE Nummer beantragen →</a>
+    </div>
+    <a href="nie-nummer.html" class="nav-cta-desktop">NIE beantragen</a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">☰</button>
+  </div>
 </nav>
 
 <div class="hero">
@@ -486,5 +497,6 @@
   });
 </script>
 
+<script src="nav.js"></script>
 </body>
 </html>
