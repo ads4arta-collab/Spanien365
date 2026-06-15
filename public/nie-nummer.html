@@ -216,6 +216,25 @@
     /* ERROR */
     .error-msg { font-size: 12px; color: #c0392b; margin-top: 4px; display: none; }
     input.error, select.error { border-color: #c0392b; }
+
+    .nie-timeline { margin-bottom: 28px; }
+    .ntl-item { display: flex; gap: 18px; }
+    .ntl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .ntl-dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--terra); color: var(--cream);
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 1;
+      box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px var(--terra);
+    }
+    .ntl-dot-final { background: var(--brown); box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px var(--brown); }
+    .ntl-line { width: 2px; flex: 1; min-height: 20px; background: var(--terra); opacity: 0.25; margin: 8px 0; }
+    .ntl-body { padding-bottom: 28px; flex: 1; padding-top: 8px; }
+    .ntl-last .ntl-body { padding-bottom: 0; }
+    .ntl-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--brown); margin: 0 0 8px; line-height: 1.25; }
+    .ntl-text { font-size: 14px; line-height: 1.75; color: var(--text); margin: 0 0 12px; }
+    .ntl-tip { font-size: 13px; color: var(--text); background: var(--sand); border-left: 3px solid var(--gold); padding: 10px 14px; line-height: 1.55; }
   </style>
 </head>
 <body>
@@ -281,43 +300,55 @@
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,22px);font-weight:700;color:var(--brown);margin-bottom:12px;line-height:1.2;">NIE Nummer beantragen – Schritt für Schritt</h2>
       <p style="font-size:15px;line-height:1.75;color:var(--text);margin-bottom:16px;">Den NIE-Antrag kannst du in Spanien direkt bei der Oficina de Extranjería (Ausländerbehörde) oder der Comisaría de Policía stellen. So läuft der Prozess ab:</p>
 
-      <div class="swiper-wrap" id="guide">
-        <div class="swiper-track" id="swiper-track">
-          <div class="swiper-card">
-            <div class="swiper-num">1</div>
-            <div class="swiper-title">Formular EX-15 ausfüllen</div>
-            <div class="swiper-text">Das offizielle NIE-Antragsformular EX-15 vollständig auf Spanisch und in Großbuchstaben ausfüllen. Fehler beim Formular führen direkt zur Ablehnung beim Termin.</div>
-            <div class="swiper-tip">💡 Unser Service übernimmt diesen Schritt für dich – fertig ausgefüllt, korrekt auf Spanisch.</div>
+      <div class="nie-timeline" id="guide">
+
+        <div class="ntl-item">
+          <div class="ntl-left">
+            <div class="ntl-dot">1</div>
+            <div class="ntl-line"></div>
           </div>
-          <div class="swiper-card">
-            <div class="swiper-num">2</div>
-            <div class="swiper-title">Modelo 790-012 bei der Bank bezahlen</div>
-            <div class="swiper-text">Die Verwaltungsgebühr beträgt 9,84 € und muss vor dem Termin bei einer spanischen Bank eingezahlt und abgestempelt werden. Ohne Bankstempel keine Bearbeitung.</div>
-            <div class="swiper-tip">💡 Das Modelo 790-012 liefern wir dir ebenfalls fertig ausgefüllt per Mail.</div>
-          </div>
-          <div class="swiper-card">
-            <div class="swiper-num">3</div>
-            <div class="swiper-title">Termin bei der Ausländerbehörde</div>
-            <div class="swiper-text">Persönlich bei der Oficina de Extranjería oder Comisaría de Policía erscheinen. Mitbringen: Reisepass/Ausweis + Kopie, EX-15 (2x), Modelo 790-012 (2x), Begründung (Foto, Arbeitsvertrag etc.).</div>
-            <div class="swiper-tip">⚠️ Immer Original UND Kopie mitbringen – viele Behörden akzeptieren sonst nicht.</div>
-          </div>
-          <div class="swiper-card">
-            <div class="swiper-num">4</div>
-            <div class="swiper-title">NIE Nummer erhalten</div>
-            <div class="swiper-text">Je nach Behörde und Region bekommst du die NIE sofort ausgestellt oder nach 2–3 Wochen. In manchen Fällen reicht zunächst ein vorläufiger Auszug (resguardo) für Notartermine.</div>
-            <div class="swiper-tip">✅ Mit der NIE kannst du sofort Bankkonto eröffnen, Verträge unterschreiben und dich anmelden.</div>
+          <div class="ntl-body">
+            <h3 class="ntl-title">Formular EX-15 ausfüllen</h3>
+            <p class="ntl-text">Das offizielle NIE-Antragsformular EX-15 muss vollständig auf Spanisch und in Großbuchstaben ausgefüllt werden. Fehler führen direkt zur Ablehnung – immer Original und Kopie drucken.</p>
+            <div class="ntl-tip">💡 Unser Service übernimmt diesen Schritt für dich – fertig ausgefüllt, korrekt auf Spanisch, sofort per Mail.</div>
           </div>
         </div>
-        <div class="swiper-controls">
-          <button class="swiper-btn" id="swiper-prev" aria-label="Zurück">←</button>
-          <div class="swiper-dots" id="swiper-dots">
-            <span class="swiper-dot active"></span>
-            <span class="swiper-dot"></span>
-            <span class="swiper-dot"></span>
-            <span class="swiper-dot"></span>
+
+        <div class="ntl-item">
+          <div class="ntl-left">
+            <div class="ntl-dot">2</div>
+            <div class="ntl-line"></div>
           </div>
-          <button class="swiper-btn" id="swiper-next" aria-label="Weiter">→</button>
+          <div class="ntl-body">
+            <h3 class="ntl-title">Modelo 790-012 bei der Bank bezahlen</h3>
+            <p class="ntl-text">Die Verwaltungsgebühr beträgt 9,84 € und muss vor dem Termin bei einer spanischen Bank eingezahlt und abgestempelt werden. Ohne Bankstempel keine Bearbeitung durch die Behörde.</p>
+            <div class="ntl-tip">💡 Das Modelo 790-012 liefern wir dir fertig ausgefüllt – du gehst direkt zur Bank und zahlst.</div>
+          </div>
         </div>
+
+        <div class="ntl-item">
+          <div class="ntl-left">
+            <div class="ntl-dot">3</div>
+            <div class="ntl-line"></div>
+          </div>
+          <div class="ntl-body">
+            <h3 class="ntl-title">Termin bei der Ausländerbehörde</h3>
+            <p class="ntl-text">Persönlich bei der Oficina de Extranjería erscheinen. Mitbringen: Reisepass/Ausweis + Kopie, EX-15 (2×), Modelo 790-012 (2×) und einen Nachweis für den Antragsgrund (z.B. Arbeitsvertrag).</p>
+            <div class="ntl-tip">⚠️ Immer Original UND Kopie mitbringen – viele Behörden akzeptieren den Antrag sonst nicht.</div>
+          </div>
+        </div>
+
+        <div class="ntl-item ntl-last">
+          <div class="ntl-left">
+            <div class="ntl-dot ntl-dot-final">4</div>
+          </div>
+          <div class="ntl-body">
+            <h3 class="ntl-title">NIE Nummer erhalten</h3>
+            <p class="ntl-text">Je nach Behörde bekommst du die NIE sofort oder nach 2–3 Wochen. In manchen Fällen reicht zunächst ein vorläufiger Auszug (resguardo) für Notartermine oder Bankgespräche.</p>
+            <div class="ntl-tip">✅ Mit der NIE kannst du sofort Bankkonto eröffnen, Mietverträge unterschreiben und dich anmelden.</div>
+          </div>
+        </div>
+
       </div>
 
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,22px);font-weight:700;color:var(--brown);margin-bottom:12px;line-height:1.2;">NIE Nummer Formular Download – EX-15</h2>
