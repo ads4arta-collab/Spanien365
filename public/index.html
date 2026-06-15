@@ -3,118 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spanien365.de – Das Magazin für Auswanderer</title>
-  <meta name="description" content="Alles was du für dein Leben in Spanien brauchst – NIE Nummer beantragen, Bürokratie, Selbständigkeit, Krankenversicherung und mehr.">
+  <title>Spanien365.de – Auswandern nach Spanien: NIE Nummer, Bürokratie & Leben in Spanien</title>
+  <meta name="description" content="Das deutschsprachige Magazin für Auswanderer in Spanien. NIE Nummer beantragen, Autónomo werden, Krankenversicherung, Wohnen und mehr – alles was du brauchst.">
+  <meta name="keywords" content="Auswandern Spanien, NIE Nummer beantragen, Leben in Spanien, Expats Spanien, Autónomo Spanien, Krankenversicherung Spanien">
+  <meta property="og:title" content="Spanien365.de – Das Magazin für Auswanderer">
+  <meta property="og:description" content="NIE Nummer beantragen, Bürokratie, Selbständigkeit und Alltag in Spanien – alles auf Deutsch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spanien365.de">
+  <link rel="canonical" href="https://spanien365.de">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nav.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --brown: #2C2416;
-      --cream: #F7F1E8;
-      --sand: #EDE3D4;
-      --terra: #C0622B;
-      --gold: #D4A96A;
-      --muted: #9a7e62;
-      --border: #D4C4A8;
-      --text: #5a4a38;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); }
-    a { text-decoration: none; color: inherit; }
-
-    /* ── NAV ── */
-    .nav {
-      background: var(--brown);
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 3px solid var(--terra);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--cream);
-      padding: 14px 0;
-      letter-spacing: -0.01em;
-    }
-    .nav-logo span { color: var(--terra); }
-    .nav-links {
-      display: none;
-      gap: 0;
-    }
-    @media (min-width: 640px) { .nav-links { display: flex; } }
-    .nav-link {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(247,241,232,0.6);
-      padding: 18px 12px;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -3px;
-    }
-    .nav-link:hover { color: var(--cream); border-bottom-color: var(--gold); }
-    .nav-cta {
-      background: var(--terra);
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 9px 16px;
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .nav-cta:hover { background: #a35224; }
-
-    /* ── HERO ── */
     .hero {
-      background: var(--brown);
-      padding: 48px 22px 44px;
+      background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 60%);
+      padding: 52px 22px 48px;
+      border-bottom: 2px solid var(--sand2);
       position: relative;
       overflow: hidden;
     }
-    .hero-grain {
-      position: absolute; inset: 0;
-      opacity: 0.04;
-      background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
-      background-size: 8px 8px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.08;
     }
     .hero-inner { position: relative; max-width: 600px; }
     .hero-tag {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+      color: var(--terra);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .hero-tag::before { content: ''; display: block; width: 28px; height: 2px; background: var(--terra); }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 8vw, 56px);
+      font-size: clamp(34px, 7vw, 54px);
       font-weight: 900;
-      line-height: 1.05;
-      color: var(--cream);
+      line-height: 1.06;
+      color: var(--brown);
       margin-bottom: 18px;
       letter-spacing: -0.02em;
     }
-    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero h1 em { font-style: italic; color: var(--terra); }
     .hero p {
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.65;
-      color: rgba(247,241,232,0.7);
-      margin-bottom: 28px;
-      max-width: 460px;
+      color: var(--text);
+      margin-bottom: 32px;
+      max-width: 480px;
     }
-    .hero-cta {
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -125,357 +72,180 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 14px 24px;
-      border: none;
-      cursor: pointer;
     }
-    .hero-cta:hover { background: #a35224; }
-
-    /* ── NIE BANNER ── */
-    .nie-banner {
-      background: var(--terra);
-      padding: 24px 22px;
-    }
-    .nie-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(247,241,232,0.6);
-      margin-bottom: 6px;
-    }
-    .nie-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(18px, 4vw, 22px);
-      font-weight: 700;
-      font-style: italic;
-      color: var(--cream);
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-    .nie-sub {
-      font-size: 13px;
-      line-height: 1.55;
-      color: rgba(247,241,232,0.82);
-      margin-bottom: 18px;
-    }
-    .nie-btn {
+    .btn-primary:hover { background: #a35224; }
+    .btn-secondary {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: var(--cream);
-      color: var(--terra);
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 12px 20px;
-      border: none;
-      cursor: pointer;
+      gap: 8px;
+      background: transparent;
+      color: var(--brown);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border: 2px solid var(--sand2);
     }
-    .nie-btn:hover { background: #e8e3db; }
+    .btn-secondary:hover { border-color: var(--brown); }
 
+    .nie-highlight { background: var(--terra); padding: 28px 22px; }
+    .nie-highlight-inner { max-width: 1000px; margin: 0 auto; }
     @media (min-width: 640px) {
-      .nie-banner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-      }
-      .nie-banner-left { flex: 1; }
-      .nie-sub { margin-bottom: 0; }
+      .nie-highlight-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
     }
+    .nie-label { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,246,238,0.6); margin-bottom: 6px; }
+    .nie-headline { font-family: 'Playfair Display', serif; font-size: clamp(17px, 3.5vw, 22px); font-weight: 700; font-style: italic; color: var(--cream); line-height: 1.2; margin-bottom: 8px; }
+    .nie-sub { font-size: 13px; line-height: 1.55; color: rgba(250,246,238,0.8); margin-bottom: 18px; }
+    @media (min-width: 640px) { .nie-sub { margin-bottom: 0; } }
+    .nie-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--cream); color: var(--terra);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 13px 22px; white-space: nowrap; flex-shrink: 0;
+    }
+    .nie-btn:hover { background: #f0ebe3; }
 
-    /* ── THEMEN ── */
-    .section {
-      padding: 40px 22px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--brown);
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--brown);
-    }
-    .section-sub {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--terra);
-    }
-
-    /* Featured card */
-    .card-featured {
-      background: var(--brown);
-      padding: 24px 22px;
-      margin-bottom: 14px;
-      border-left: 3px solid var(--terra);
-    }
-    .card-featured-cat {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .card-featured h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-    .card-featured p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: rgba(247,241,232,0.7);
-      margin-bottom: 14px;
-    }
-    .card-featured-link {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* Grid cards */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 480px) { .cards-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 720px) { .cards-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
-    .card {
-      background: #fff;
-      padding: 20px 18px;
-      border-left: 3px solid transparent;
-      cursor: pointer;
-      transition: border-color 0.15s;
-      display: flex;
-      flex-direction: column;
-    }
-    .card:hover { border-left-color: var(--gold); }
-    .card-cat {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--brown);
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text);
-      flex: 1;
-      margin-bottom: 14px;
-    }
-    .card-link {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--terra);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* ── USP STRIP ── */
-    .usp-strip {
-      background: var(--sand);
-      padding: 28px 22px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    @media (min-width: 640px) { .usp-strip { grid-template-columns: 1fr 1fr 1fr; } }
-    .usp { display: flex; align-items: flex-start; gap: 12px; }
-    .usp-icon { font-size: 22px; flex-shrink: 0; }
+    .usp-row { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--sand2); border-top: 1px solid var(--sand2); border-bottom: 1px solid var(--sand2); }
+    @media (min-width: 600px) { .usp-row { grid-template-columns: 1fr 1fr 1fr; } }
+    .usp-item { background: var(--cream); padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px; }
+    .usp-icon { font-size: 24px; flex-shrink: 0; }
     .usp-title { font-size: 13px; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
     .usp-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-    /* ── FOOTER ── */
-    .footer {
-      background: var(--brown);
-      padding: 24px 22px;
-      border-top: 3px solid var(--gold);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .page-inner { max-width: 1000px; margin: 0 auto; padding: 0 22px; }
+    .section { padding: 48px 0; }
+    .section + .section { border-top: 1px solid var(--sand2); }
+    .section-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
     }
-    @media (min-width: 640px) {
-      .footer { flex-direction: row; align-items: center; justify-content: space-between; }
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--cream);
-    }
+    .section-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--terra); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--brown); margin-bottom: 10px; line-height: 1.2; }
+    .section-intro { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 28px; max-width: 560px; }
+
+    .nie-steps { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+    @media (min-width: 560px) { .nie-steps { grid-template-columns: 1fr 1fr; } }
+    .nie-step { background: var(--white); border: 1.5px solid var(--border); padding: 18px 16px; display: flex; gap: 14px; align-items: flex-start; }
+    .nie-step-num { width: 28px; height: 28px; background: var(--terra); color: var(--cream); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nie-step-title { font-size: 13px; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
+    .nie-step-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .topics-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 480px) { .topics-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 720px) { .topics-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .topic-card { background: var(--white); border: 1.5px solid var(--border); padding: 22px 20px; display: flex; flex-direction: column; transition: border-color 0.15s, box-shadow 0.15s; }
+    .topic-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(58,46,30,0.08); }
+    .topic-cat { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .topic-card h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--brown); line-height: 1.3; margin-bottom: 10px; }
+    .topic-card p { font-size: 13px; line-height: 1.6; color: var(--text); flex: 1; margin-bottom: 14px; }
+    .topic-link { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--terra); }
+
+    .footer { background: var(--sand); border-top: 2px solid var(--sand2); padding: 28px 22px; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    @media (min-width: 640px) { .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--brown); }
     .footer-logo span { color: var(--terra); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-link { font-size: 12px; color: rgba(247,241,232,0.5); }
-    .footer-link:hover { color: var(--cream); }
-    .footer-copy { font-size: 11px; color: rgba(247,241,232,0.3); }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-link { font-size: 12px; color: var(--muted); }
+    .footer-link:hover { color: var(--brown); }
+    .footer-copy { font-size: 11px; color: var(--muted); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-logo">Spanien<span>365</span></div>
-    <div class="nav-links">
-      <a href="#themen" class="nav-link">Auswandern</a>
-      <a href="nie-nummer.html" class="nav-link">NIE Nummer</a>
-      <a href="#themen" class="nav-link">Bürokratie</a>
-      <a href="#themen" class="nav-link">Selbständig</a>
-      <a href="#themen" class="nav-link">Leben in Spanien</a>
+  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Spanien<span>365</span></a>
+      <div id="nav-menu" class="nav-menu">
+        <a href="#auswanderung">Auswandern</a>
+        <a href="nie-nummer.html">NIE Nummer</a>
+        <a href="#themen">Bürokratie</a>
+        <a href="#themen">Selbständig</a>
+        <a href="#themen">Leben in Spanien</a>
+        <a href="nie-nummer.html" class="nav-menu-cta">NIE Nummer beantragen →</a>
+      </div>
+      <a href="nie-nummer.html" class="nav-cta-desktop">NIE beantragen</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">☰</button>
     </div>
-    <a href="nie-nummer.html" class="nav-cta">NIE beantragen</a>
   </nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-grain"></div>
+  <header class="hero">
     <div class="hero-inner">
       <div class="hero-tag">Das Magazin für Auswanderer</div>
-      <h1>Spanien.<br><em>365 Tage</em><br>im Jahr.</h1>
-      <p>Alles, was du für dein Leben in Spanien brauchst – von der ersten Behördennummer bis zum Alltag unter der Sonne.</p>
-      <a href="nie-nummer.html" class="hero-cta">
-        📄 NIE Nummer beantragen
-      </a>
+      <h1>Dein Leben in<br><em>Spanien</em> –<br>wir machen den Papierkram.</h1>
+      <p>NIE Nummer, Bürokratie, Selbständigkeit, Krankenversicherung – alles was du für deinen Start in Spanien brauchst, auf Deutsch erklärt.</p>
+      <div class="hero-btns">
+        <a href="nie-nummer.html" class="btn-primary">📄 NIE Nummer beantragen</a>
+        <a href="#auswanderung" class="btn-secondary">Alle Guides lesen</a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <!-- NIE BANNER -->
-  <div class="nie-banner">
-    <div class="nie-banner-left">
-      <div class="nie-label">Unser Service</div>
-      <div class="nie-headline">Das Dokument, das alles ändert.</div>
-      <div class="nie-sub">Wir füllen dein NIE-Formular aus. Du gibst deine Daten ein – wir liefern das fertige Dokument direkt in dein Postfach.</div>
-    </div>
-    <a href="nie-nummer.html" class="nie-btn">Jetzt starten →</a>
-  </div>
-
-  <!-- USP -->
-  <div class="usp-strip">
-    <div class="usp">
-      <div class="usp-icon">⚡</div>
+  <section class="nie-highlight">
+    <div class="nie-highlight-inner">
       <div>
-        <div class="usp-title">Sofort per Mail</div>
-        <div class="usp-text">Deine fertig ausgefüllten Formulare kommen innerhalb von Minuten nach der Zahlung.</div>
+        <div class="nie-label">Unser Service – nur 29 €</div>
+        <div class="nie-headline">Das Dokument, das alles ändert.</div>
+        <div class="nie-sub">Wir füllen dein NIE-Formular aus. Du gibst deine Daten ein – fertig ausgefülltes EX-15 + Modelo 790-012 direkt in dein Postfach.</div>
       </div>
+      <a href="nie-nummer.html" class="nie-btn">Jetzt starten →</a>
     </div>
-    <div class="usp">
-      <div class="usp-icon">✅</div>
-      <div>
-        <div class="usp-title">Korrekt ausgefüllt</div>
-        <div class="usp-text">EX-15 + Modelo 790-012 – beide Formulare, fertig für den Termin.</div>
-      </div>
-    </div>
-    <div class="usp">
-      <div class="usp-icon">🔒</div>
-      <div>
-        <div class="usp-title">Sicher & diskret</div>
-        <div class="usp-text">Deine Daten werden ausschließlich zur Formularerstellung genutzt und danach gelöscht.</div>
-      </div>
-    </div>
+  </section>
+
+  <div class="usp-row">
+    <div class="usp-item"><div class="usp-icon">⚡</div><div><div class="usp-title">Sofort per Mail</div><div class="usp-text">Deine Formulare kommen innerhalb von Minuten nach der Zahlung.</div></div></div>
+    <div class="usp-item"><div class="usp-icon">✅</div><div><div class="usp-title">Beide Formulare</div><div class="usp-text">EX-15 + Modelo 790-012 – fertig ausgefüllt für den Termin.</div></div></div>
+    <div class="usp-item"><div class="usp-icon">🔒</div><div><div class="usp-title">Sicher & diskret</div><div class="usp-text">Deine Daten werden nach der Formularerstellung sofort gelöscht.</div></div></div>
   </div>
 
-  <!-- THEMEN -->
-  <div class="section" id="themen">
-    <div class="section-header">
-      <div class="section-title">Themen</div>
-      <div class="section-sub">Alle Guides</div>
-    </div>
+  <main class="page-inner">
 
-    <a href="nie-nummer.html" class="card-featured">
-      <div class="card-featured-cat">NIE Nummer</div>
-      <h3>Was ist die NIE Nummer – und warum brauchst du sie?</h3>
-      <p>Die Identifikationsnummer für Ausländer ist Pflicht für fast alles in Spanien: Konto, Wohnung, Arbeit. Hier der komplette Überblick – und unser Service zum Fertig-Ausfüllen.</p>
-      <div class="card-featured-link">Vollständigen Guide lesen →</div>
-    </a>
+    <section class="section" id="auswanderung">
+      <div class="section-eyebrow">Auswanderung</div>
+      <h2 class="section-title">Nach Spanien auswandern – wo fängst du an?</h2>
+      <p class="section-intro">Spanien ist eines der beliebtesten Auswanderungsziele für Deutschsprachige – Sonne, Lebensqualität, Infrastruktur. Aber der Weg dorthin hat seine Tücken. Der wichtigste erste Schritt: die NIE Nummer.</p>
+      <div class="nie-steps">
+        <div class="nie-step"><div class="nie-step-num">1</div><div><div class="nie-step-title">NIE Nummer beantragen</div><div class="nie-step-text">Die Identifikationsnummer für Ausländer – ohne sie geht in Spanien nichts.</div></div></div>
+        <div class="nie-step"><div class="nie-step-num">2</div><div><div class="nie-step-title">Bankkonto eröffnen</div><div class="nie-step-text">Mit NIE Nummer und Reisepass bei einer spanischen Bank anmelden.</div></div></div>
+        <div class="nie-step"><div class="nie-step-num">3</div><div><div class="nie-step-title">Wohnsitz anmelden</div><div class="nie-step-text">Empadronamiento beim Ayuntamiento – Pflicht für viele Behördengänge.</div></div></div>
+        <div class="nie-step"><div class="nie-step-num">4</div><div><div class="nie-step-title">Krankenversicherung</div><div class="nie-step-text">Privat, gesetzlich oder Expat-Versicherung – je nach Situation.</div></div></div>
+      </div>
+      <a href="nie-nummer.html" class="btn-primary">📄 NIE Nummer jetzt beantragen – 29 €</a>
+    </section>
 
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-cat">Auswanderung</div>
-        <h3>Der erste Schritt: Auswandern planen</h3>
-        <p>Checkliste, Zeitplan, häufige Fehler – so startest du ohne böse Überraschungen.</p>
-        <div class="card-link">Mehr lesen →</div>
+    <section class="section" id="themen">
+      <div class="section-eyebrow">Alle Themen</div>
+      <h2 class="section-title">Guides für dein Leben in Spanien</h2>
+      <p class="section-intro">Von Bürokratie bis Alltag – hier findest du alles was du als Auswanderer in Spanien wissen musst.</p>
+      <div class="topics-grid">
+        <a href="nie-nummer.html" class="topic-card">
+          <div class="topic-cat">Bürokratie</div>
+          <h3>Was ist die NIE Nummer?</h3>
+          <p>Alles zur Identifikationsnummer für Ausländer – wer sie braucht, wie man sie beantragt und was sie kostet.</p>
+          <div class="topic-link">Guide lesen →</div>
+        </a>
+        <div class="topic-card"><div class="topic-cat">Selbständigkeit</div><h3>Autónomo werden in Spanien</h3><p>Anmelden, Steuern, Sozialversicherung – der komplette Leitfaden für Freelancer und Selbständige.</p><div class="topic-link">Demnächst →</div></div>
+        <div class="topic-card"><div class="topic-cat">Gesundheit</div><h3>Krankenversicherung für Auswanderer</h3><p>Privat, gesetzlich oder Expat-Versicherung? Welche Option wann die richtige ist.</p><div class="topic-link">Demnächst →</div></div>
+        <div class="topic-card"><div class="topic-cat">Finanzen</div><h3>Spanisches Bankkonto eröffnen</h3><p>Welche Banken für Expats geeignet sind und was du dafür brauchst.</p><div class="topic-link">Demnächst →</div></div>
+        <div class="topic-card"><div class="topic-cat">Wohnen</div><h3>Wohnung mieten in Spanien</h3><p>Mietverträge, Kaution, Fallen – was du vor der Unterschrift wissen musst.</p><div class="topic-link">Demnächst →</div></div>
+        <div class="topic-card"><div class="topic-cat">Steuern</div><h3>Steuern als Auswanderer</h3><p>Steuerpflicht, Doppelbesteuerung, IRPF – das Wichtigste kompakt erklärt.</p><div class="topic-link">Demnächst →</div></div>
       </div>
-      <div class="card">
-        <div class="card-cat">Selbständigkeit</div>
-        <h3>Autónomo werden in Spanien</h3>
-        <p>Anmelden, Steuern, Sozialversicherung – der komplette Leitfaden für Freelancer.</p>
-        <div class="card-link">Mehr lesen →</div>
-      </div>
-      <div class="card">
-        <div class="card-cat">Gesundheit</div>
-        <h3>Krankenversicherung für Auswanderer</h3>
-        <p>Privat, gesetzlich oder Expat-Versicherung? Welche Option wann die richtige ist.</p>
-        <div class="card-link">Mehr lesen →</div>
-      </div>
-      <div class="card">
-        <div class="card-cat">Finanzen</div>
-        <h3>Spanisches Bankkonto eröffnen</h3>
-        <p>Welche Banken für Expats geeignet sind und was du dafür brauchst.</p>
-        <div class="card-link">Mehr lesen →</div>
-      </div>
-      <div class="card">
-        <div class="card-cat">Wohnen</div>
-        <h3>Wohnung mieten in Spanien</h3>
-        <p>Mietverträge, Kaution, Fallen – was du vor der Unterschrift wissen musst.</p>
-        <div class="card-link">Mehr lesen →</div>
-      </div>
-      <div class="card">
-        <div class="card-cat">Steuern</div>
-        <h3>Steuern als Auswanderer in Spanien</h3>
-        <p>Steuerpflicht, Doppelbesteuerung, IRPF – das Wichtigste kompakt erklärt.</p>
-        <div class="card-link">Mehr lesen →</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- FOOTER -->
+  </main>
+
   <footer class="footer">
-    <div class="footer-logo">Spanien<span>365</span>.de</div>
-    <div class="footer-links">
-      <a href="#" class="footer-link">Impressum</a>
-      <a href="#" class="footer-link">Datenschutz</a>
-      <a href="#" class="footer-link">AGB</a>
-      <a href="mailto:info@spanien365.de" class="footer-link">Kontakt</a>
+    <div class="footer-inner">
+      <div class="footer-logo">Spanien<span>365</span>.de</div>
+      <div class="footer-links">
+        <a href="impressum.html" class="footer-link">Impressum</a>
+        <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+        <a href="agb.html" class="footer-link">AGB</a>
+        <a href="mailto:info@spanien365.de" class="footer-link">Kontakt</a>
+      </div>
+      <div class="footer-copy">© 2025 spanien365.de — Alle Angaben ohne Gewähr</div>
     </div>
-    <div class="footer-copy">© 2025 spanien365.de — Alle Angaben ohne Gewähr</div>
   </footer>
 
+  <script src="nav.js"></script>
 </body>
 </html>
