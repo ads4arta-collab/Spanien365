@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spanien365.de – Das Magazin für Auswanderer</title>
+  <meta name="description" content="Alles was du für dein Leben in Spanien brauchst – NIE Nummer beantragen, Bürokratie, Selbständigkeit, Krankenversicherung und mehr.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brown: #2C2416;
+      --cream: #F7F1E8;
+      --sand: #EDE3D4;
+      --terra: #C0622B;
+      --gold: #D4A96A;
+      --muted: #9a7e62;
+      --border: #D4C4A8;
+      --text: #5a4a38;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--brown);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--terra);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--cream);
+      padding: 14px 0;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--terra); }
+    .nav-links {
+      display: none;
+      gap: 0;
+    }
+    @media (min-width: 640px) { .nav-links { display: flex; } }
+    .nav-link {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(247,241,232,0.6);
+      padding: 18px 12px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -3px;
+    }
+    .nav-link:hover { color: var(--cream); border-bottom-color: var(--gold); }
+    .nav-cta {
+      background: var(--terra);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { background: #a35224; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--brown);
+      padding: 48px 22px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+      background-size: 8px 8px;
+    }
+    .hero-inner { position: relative; max-width: 600px; }
+    .hero-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 8vw, 56px);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(247,241,232,0.7);
+      margin-bottom: 28px;
+      max-width: 460px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terra);
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border: none;
+      cursor: pointer;
+    }
+    .hero-cta:hover { background: #a35224; }
+
+    /* ── NIE BANNER ── */
+    .nie-banner {
+      background: var(--terra);
+      padding: 24px 22px;
+    }
+    .nie-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,241,232,0.6);
+      margin-bottom: 6px;
+    }
+    .nie-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 4vw, 22px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .nie-sub {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(247,241,232,0.82);
+      margin-bottom: 18px;
+    }
+    .nie-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream);
+      color: var(--terra);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    .nie-btn:hover { background: #e8e3db; }
+
+    @media (min-width: 640px) {
+      .nie-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .nie-banner-left { flex: 1; }
+      .nie-sub { margin-bottom: 0; }
+    }
+
+    /* ── THEMEN ── */
+    .section {
+      padding: 40px 22px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--brown);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .section-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    /* Featured card */
+    .card-featured {
+      background: var(--brown);
+      padding: 24px 22px;
+      margin-bottom: 14px;
+      border-left: 3px solid var(--terra);
+    }
+    .card-featured-cat {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .card-featured h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .card-featured p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(247,241,232,0.7);
+      margin-bottom: 14px;
+    }
+    .card-featured-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Grid cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 480px) { .cards-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 720px) { .cards-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card {
+      background: #fff;
+      padding: 20px 18px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover { border-left-color: var(--gold); }
+    .card-cat {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .card-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── USP STRIP ── */
+    .usp-strip {
+      background: var(--sand);
+      padding: 28px 22px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) { .usp-strip { grid-template-columns: 1fr 1fr 1fr; } }
+    .usp { display: flex; align-items: flex-start; gap: 12px; }
+    .usp-icon { font-size: 22px; flex-shrink: 0; }
+    .usp-title { font-size: 13px; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
+    .usp-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--brown);
+      padding: 24px 22px;
+      border-top: 3px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    @media (min-width: 640px) {
+      .footer { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .footer-logo span { color: var(--terra); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-link { font-size: 12px; color: rgba(247,241,232,0.5); }
+    .footer-link:hover { color: var(--cream); }
+    .footer-copy { font-size: 11px; color: rgba(247,241,232,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Spanien<span>365</span></div>
+    <div class="nav-links">
+      <a href="#themen" class="nav-link">Auswandern</a>
+      <a href="nie-nummer.html" class="nav-link">NIE Nummer</a>
+      <a href="#themen" class="nav-link">Bürokratie</a>
+      <a href="#themen" class="nav-link">Selbständig</a>
+      <a href="#themen" class="nav-link">Leben in Spanien</a>
+    </div>
+    <a href="nie-nummer.html" class="nav-cta">NIE beantragen</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">Das Magazin für Auswanderer</div>
+      <h1>Spanien.<br><em>365 Tage</em><br>im Jahr.</h1>
+      <p>Alles, was du für dein Leben in Spanien brauchst – von der ersten Behördennummer bis zum Alltag unter der Sonne.</p>
+      <a href="nie-nummer.html" class="hero-cta">
+        📄 NIE Nummer beantragen
+      </a>
+    </div>
+  </div>
+
+  <!-- NIE BANNER -->
+  <div class="nie-banner">
+    <div class="nie-banner-left">
+      <div class="nie-label">Unser Service</div>
+      <div class="nie-headline">Das Dokument, das alles ändert.</div>
+      <div class="nie-sub">Wir füllen dein NIE-Formular aus. Du gibst deine Daten ein – wir liefern das fertige Dokument direkt in dein Postfach.</div>
+    </div>
+    <a href="nie-nummer.html" class="nie-btn">Jetzt starten →</a>
+  </div>
+
+  <!-- USP -->
+  <div class="usp-strip">
+    <div class="usp">
+      <div class="usp-icon">⚡</div>
+      <div>
+        <div class="usp-title">Sofort per Mail</div>
+        <div class="usp-text">Deine fertig ausgefüllten Formulare kommen innerhalb von Minuten nach der Zahlung.</div>
+      </div>
+    </div>
+    <div class="usp">
+      <div class="usp-icon">✅</div>
+      <div>
+        <div class="usp-title">Korrekt ausgefüllt</div>
+        <div class="usp-text">EX-15 + Modelo 790-012 – beide Formulare, fertig für den Termin.</div>
+      </div>
+    </div>
+    <div class="usp">
+      <div class="usp-icon">🔒</div>
+      <div>
+        <div class="usp-title">Sicher & diskret</div>
+        <div class="usp-text">Deine Daten werden ausschließlich zur Formularerstellung genutzt und danach gelöscht.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THEMEN -->
+  <div class="section" id="themen">
+    <div class="section-header">
+      <div class="section-title">Themen</div>
+      <div class="section-sub">Alle Guides</div>
+    </div>
+
+    <a href="nie-nummer.html" class="card-featured">
+      <div class="card-featured-cat">NIE Nummer</div>
+      <h3>Was ist die NIE Nummer – und warum brauchst du sie?</h3>
+      <p>Die Identifikationsnummer für Ausländer ist Pflicht für fast alles in Spanien: Konto, Wohnung, Arbeit. Hier der komplette Überblick – und unser Service zum Fertig-Ausfüllen.</p>
+      <div class="card-featured-link">Vollständigen Guide lesen →</div>
+    </a>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-cat">Auswanderung</div>
+        <h3>Der erste Schritt: Auswandern planen</h3>
+        <p>Checkliste, Zeitplan, häufige Fehler – so startest du ohne böse Überraschungen.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+      <div class="card">
+        <div class="card-cat">Selbständigkeit</div>
+        <h3>Autónomo werden in Spanien</h3>
+        <p>Anmelden, Steuern, Sozialversicherung – der komplette Leitfaden für Freelancer.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+      <div class="card">
+        <div class="card-cat">Gesundheit</div>
+        <h3>Krankenversicherung für Auswanderer</h3>
+        <p>Privat, gesetzlich oder Expat-Versicherung? Welche Option wann die richtige ist.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+      <div class="card">
+        <div class="card-cat">Finanzen</div>
+        <h3>Spanisches Bankkonto eröffnen</h3>
+        <p>Welche Banken für Expats geeignet sind und was du dafür brauchst.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+      <div class="card">
+        <div class="card-cat">Wohnen</div>
+        <h3>Wohnung mieten in Spanien</h3>
+        <p>Mietverträge, Kaution, Fallen – was du vor der Unterschrift wissen musst.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+      <div class="card">
+        <div class="card-cat">Steuern</div>
+        <h3>Steuern als Auswanderer in Spanien</h3>
+        <p>Steuerpflicht, Doppelbesteuerung, IRPF – das Wichtigste kompakt erklärt.</p>
+        <div class="card-link">Mehr lesen →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">Spanien<span>365</span>.de</div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Impressum</a>
+      <a href="#" class="footer-link">Datenschutz</a>
+      <a href="#" class="footer-link">AGB</a>
+      <a href="mailto:info@spanien365.de" class="footer-link">Kontakt</a>
+    </div>
+    <div class="footer-copy">© 2025 spanien365.de — Alle Angaben ohne Gewähr</div>
+  </footer>
+
+</body>
+</html>
