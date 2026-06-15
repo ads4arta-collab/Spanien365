@@ -27,6 +27,81 @@
     body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); }
 
     /* NAV: see nav.css */
+    /* HERO GRID */
+    .hero { background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 60%); padding: 44px 22px 40px; border-bottom: 2px solid var(--sand2); }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    @media (min-width: 700px) { .hero-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+    .hero-left {}
+    .hero-desc { font-size:15px; line-height:1.7; color:var(--text); margin:14px 0 22px; }
+    .hero-btns { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex;align-items:center;gap:7px;background:var(--terra);color:#FAF6EE;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 22px; }
+    .btn-primary:hover { background:#a35224; }
+    .btn-secondary { display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--brown);font-size:13px;font-weight:600;padding:13px 22px;border:2px solid var(--sand2); }
+    .btn-secondary:hover { border-color:var(--brown); }
+    .hero-cards { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .hero-card { background:#fff; border:1.5px solid var(--border); padding:16px 14px; }
+    .hc-icon { font-size:20px; margin-bottom:6px; }
+    .hc-title { font-size:13px; font-weight:600; color:var(--brown); margin-bottom:3px; }
+    .hc-text { font-size:12px; color:var(--muted); line-height:1.5; }
+
+
+
+    .s-card { min-width:100%; background:#fff; border:1.5px solid var(--border); border-top:3px solid var(--terra); border-radius:8px; padding:24px 20px; box-sizing:border-box; }
+    .s-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--terra); color:var(--cream); font-size:14px; font-weight:600; border-radius:6px; margin-bottom:14px; }
+    .s-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--brown); margin:0 0 10px; line-height:1.25; }
+    .s-text { font-size:14px; line-height:1.75; color:var(--text); margin:0 0 14px; }
+    .s-tip { display:flex; gap:10px; align-items:flex-start; background:var(--sand); border-radius:6px; padding:10px 14px; font-size:13px; color:var(--text); line-height:1.55; }
+    .s-tip-icon { flex-shrink:0; }
+    .s-prog-item { flex:1; height:3px; background:var(--border); border-radius:2px; transition:background .3s; }
+    .s-prog-item.done { background:var(--terra); }
+    .s-dot { width:6px; height:6px; border-radius:50%; background:var(--border); transition:all .3s; }
+    .s-dot.active { background:var(--terra); width:18px; border-radius:3px; }
+    .s-btn { width:36px; height:36px; border:1.5px solid var(--border); background:#fff; color:var(--brown); font-size:16px; cursor:pointer; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .s-btn:hover { background:var(--terra); color:var(--cream); border-color:var(--terra); }
+    .s-btn:disabled { opacity:.3; cursor:default; }
+    .s-btn:disabled:hover { background:#fff; color:var(--brown); border-color:var(--border); }
+    .s-card { min-width:100%; background:#fff; border:1.5px solid var(--border); border-top:3px solid var(--terra); border-radius:8px; padding:24px 20px; box-sizing:border-box; }
+    .s-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:var(--terra); color:var(--cream); font-size:14px; font-weight:600; border-radius:6px; margin-bottom:14px; }
+    .s-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--brown); margin:0 0 10px; line-height:1.25; }
+    .s-text { font-size:14px; line-height:1.75; color:var(--text); margin:0 0 14px; }
+    .s-tip { display:flex; gap:10px; align-items:flex-start; background:var(--sand); border-radius:6px; padding:10px 14px; font-size:13px; color:var(--text); line-height:1.55; }
+    .s-tip-icon { flex-shrink:0; }
+    .s-prog-item { flex:1; height:3px; background:var(--border); border-radius:2px; transition:background .3s; }
+    .s-prog-item.done { background:var(--terra); }
+    .s-dot { width:6px; height:6px; border-radius:50%; background:var(--border); transition:all .3s; }
+    .s-dot.active { background:var(--terra); width:18px; border-radius:3px; }
+    .s-btn { width:36px; height:36px; border:1.5px solid var(--border); background:#fff; color:var(--brown); font-size:16px; cursor:pointer; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+    .s-btn:hover { background:var(--terra); color:var(--cream); border-color:var(--terra); }
+    .s-btn:disabled { opacity:.3; cursor:default; }
+    .s-btn:disabled:hover { background:#fff; color:var(--brown); border-color:var(--border); }
+    .swiper-wrap { margin-bottom: 28px; }
+    .swiper-track { display: flex; overflow: hidden; }
+    .swiper-card {
+      min-width: 100%; padding: 24px 22px;
+      background: #fff; border: 1.5px solid var(--border);
+      border-top: 3px solid var(--terra);
+      box-sizing: border-box;
+      transition: transform 0.35s ease;
+    }
+    .swiper-num {
+      width: 32px; height: 32px; background: var(--terra); color: #FAF6EE;
+      font-size: 14px; font-weight: 700; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 14px;
+    }
+    .swiper-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--brown); margin-bottom: 10px; line-height: 1.25; }
+    .swiper-text { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+    .swiper-tip { font-size: 13px; color: var(--muted); background: var(--sand); padding: 10px 14px; line-height: 1.5; }
+    .swiper-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 14px; }
+    .swiper-btn {
+      width: 36px; height: 36px; border: 1.5px solid var(--border);
+      background: #fff; color: var(--brown); font-size: 16px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .swiper-btn:hover { background: var(--terra); color: #FAF6EE; border-color: var(--terra); }
+    .swiper-dots { display: flex; gap: 6px; }
+    .swiper-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+    .swiper-dot.active { background: var(--terra); }
+
 
     /* HERO */
     .hero { background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 60%); padding: 40px 20px 36px; border-bottom: 2px solid var(--sand2); }
@@ -122,9 +197,25 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">NIE Nummer Spanien – Der komplette Guide</div>
-  <h1>NIE Nummer beantragen –<br><em>so geht's 2025.</em></h1>
-  <p>Alles was du über die NIE Nummer wissen musst: Was sie ist, wer sie braucht, wie du das Formular ausfüllst – und wie wir dir den Papierkram abnehmen.</p>
+  <div style="max-width:1000px;margin:0 auto;">
+    <div class="hero-tag">NIE Nummer Spanien – Der komplette Guide 2025</div>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1>NIE Nummer beantragen –<br><em>so geht's 2025.</em></h1>
+        <p class="hero-desc">Die NIE Nummer ist das wichtigste Dokument für Ausländer in Spanien – ohne sie kein Bankkonto, kein Mietvertrag, keine Selbständigkeit. Hier findest du alles: Erklärung, Schritt-für-Schritt Anleitung und unseren Service zum fertigen Ausfüllen der Formulare.</p>
+        <div class="hero-btns">
+          <a href="#nie-form-wrap" class="btn-primary">📄 Formular bestellen – 29 €</a>
+          <a href="#guide" class="btn-secondary">Guide lesen ↓</a>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="hero-card"><div class="hc-icon">⚡</div><div class="hc-title">Sofort per Mail</div><div class="hc-text">EX-15 + Modelo 790-012 fertig ausgefüllt nach Zahlung.</div></div>
+        <div class="hero-card"><div class="hc-icon">✅</div><div class="hc-title">Korrekt auf Spanisch</div><div class="hc-text">Kein Fehler beim Formular – keine Ablehnung.</div></div>
+        <div class="hero-card"><div class="hc-icon">💶</div><div class="hc-title">Nur 29 € Service</div><div class="hc-text">Behördengebühr (9,84 €) separat bei der Bank.</div></div>
+        <div class="hero-card"><div class="hc-icon">🔒</div><div class="hc-title">Sicher & diskret</div><div class="hc-text">Daten werden nach Erstellung sofort gelöscht.</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SEO CONTENT -->
@@ -150,22 +241,42 @@
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,22px);font-weight:700;color:var(--brown);margin-bottom:12px;line-height:1.2;">NIE Nummer beantragen – Schritt für Schritt</h2>
       <p style="font-size:15px;line-height:1.75;color:var(--text);margin-bottom:16px;">Den NIE-Antrag kannst du in Spanien direkt bei der Oficina de Extranjería (Ausländerbehörde) oder der Comisaría de Policía stellen. So läuft der Prozess ab:</p>
 
-      <div style="display:grid;gap:10px;margin-bottom:24px;">
-        <div style="background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--terra);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:26px;height:26px;background:var(--terra);color:#FAF6EE;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
-          <div><strong style="font-size:13px;color:var(--brown);">Formular EX-15 ausfüllen</strong><br><span style="font-size:13px;color:var(--muted);line-height:1.5;">Das offizielle NIE-Antragsformular EX-15 vollständig auf Spanisch ausfüllen. Fehler hier führen zur Ablehnung.</span></div>
+      <div class="swiper-wrap" id="guide">
+        <div class="swiper-track" id="swiper-track">
+          <div class="swiper-card">
+            <div class="swiper-num">1</div>
+            <div class="swiper-title">Formular EX-15 ausfüllen</div>
+            <div class="swiper-text">Das offizielle NIE-Antragsformular EX-15 vollständig auf Spanisch und in Großbuchstaben ausfüllen. Fehler beim Formular führen direkt zur Ablehnung beim Termin.</div>
+            <div class="swiper-tip">💡 Unser Service übernimmt diesen Schritt für dich – fertig ausgefüllt, korrekt auf Spanisch.</div>
+          </div>
+          <div class="swiper-card">
+            <div class="swiper-num">2</div>
+            <div class="swiper-title">Modelo 790-012 bei der Bank bezahlen</div>
+            <div class="swiper-text">Die Verwaltungsgebühr beträgt 9,84 € und muss vor dem Termin bei einer spanischen Bank eingezahlt und abgestempelt werden. Ohne Bankstempel keine Bearbeitung.</div>
+            <div class="swiper-tip">💡 Das Modelo 790-012 liefern wir dir ebenfalls fertig ausgefüllt per Mail.</div>
+          </div>
+          <div class="swiper-card">
+            <div class="swiper-num">3</div>
+            <div class="swiper-title">Termin bei der Ausländerbehörde</div>
+            <div class="swiper-text">Persönlich bei der Oficina de Extranjería oder Comisaría de Policía erscheinen. Mitbringen: Reisepass/Ausweis + Kopie, EX-15 (2x), Modelo 790-012 (2x), Begründung (Foto, Arbeitsvertrag etc.).</div>
+            <div class="swiper-tip">⚠️ Immer Original UND Kopie mitbringen – viele Behörden akzeptieren sonst nicht.</div>
+          </div>
+          <div class="swiper-card">
+            <div class="swiper-num">4</div>
+            <div class="swiper-title">NIE Nummer erhalten</div>
+            <div class="swiper-text">Je nach Behörde und Region bekommst du die NIE sofort ausgestellt oder nach 2–3 Wochen. In manchen Fällen reicht zunächst ein vorläufiger Auszug (resguardo) für Notartermine.</div>
+            <div class="swiper-tip">✅ Mit der NIE kannst du sofort Bankkonto eröffnen, Verträge unterschreiben und dich anmelden.</div>
+          </div>
         </div>
-        <div style="background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--terra);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:26px;height:26px;background:var(--terra);color:#FAF6EE;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
-          <div><strong style="font-size:13px;color:var(--brown);">Modelo 790-012 bei der Bank bezahlen</strong><br><span style="font-size:13px;color:var(--muted);line-height:1.5;">Die Verwaltungsgebühr beträgt 9,84 € und muss vor dem Termin bei einer spanischen Bank eingezahlt werden.</span></div>
-        </div>
-        <div style="background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--terra);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:26px;height:26px;background:var(--terra);color:#FAF6EE;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-          <div><strong style="font-size:13px;color:var(--brown);">Termin bei der Ausländerbehörde</strong><br><span style="font-size:13px;color:var(--muted);line-height:1.5;">Persönlich mit Reisepass/Ausweis, Formular EX-15 (2x), Modelo 790-012 (2x) und Begründung erscheinen.</span></div>
-        </div>
-        <div style="background:#fff;border:1.5px solid var(--border);border-left:3px solid var(--terra);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:26px;height:26px;background:var(--terra);color:#FAF6EE;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
-          <div><strong style="font-size:13px;color:var(--brown);">NIE Nummer erhalten</strong><br><span style="font-size:13px;color:var(--muted);line-height:1.5;">Je nach Behörde bekommst du die NIE sofort oder nach 2–3 Wochen. Manchmal reicht ein Auszug (resguardo).</span></div>
+        <div class="swiper-controls">
+          <button class="swiper-btn" id="swiper-prev" aria-label="Zurück">←</button>
+          <div class="swiper-dots" id="swiper-dots">
+            <span class="swiper-dot active"></span>
+            <span class="swiper-dot"></span>
+            <span class="swiper-dot"></span>
+            <span class="swiper-dot"></span>
+          </div>
+          <button class="swiper-btn" id="swiper-next" aria-label="Weiter">→</button>
         </div>
       </div>
 
@@ -192,20 +303,11 @@
 </div>
 
 <div class="steps">
-  <div class="step active">
-    <div class="step-num">1</div>
-    Deine Daten
-  </div>
+  <div class="step active"><div class="step-num">1</div>Deine Daten</div>
   <div class="step-line"></div>
-  <div class="step">
-    <div class="step-num">2</div>
-    Zahlung (29 €)
-  </div>
+  <div class="step"><div class="step-num">2</div>Zahlung (29 €)</div>
   <div class="step-line"></div>
-  <div class="step">
-    <div class="step-num">3</div>
-    Formulare per Mail
-  </div>
+  <div class="step"><div class="step-num">3</div>Formulare per Mail</div>
 </div>
 
 <div class="form-wrap" id="nie-form-wrap">
@@ -563,6 +665,36 @@
   });
 </script>
 
+
+<script>
+(function(){
+  var total=4, cur=0;
+  var cards=document.getElementById('s-cards');
+  var dotsEl=document.getElementById('s-dots');
+  var prog=document.getElementById('s-prog');
+  var counter=document.getElementById('s-counter');
+  var prev=document.getElementById('s-prev');
+  var next=document.getElementById('s-next');
+  if(!cards) return;
+  for(var i=0;i<total;i++){
+    var d=document.createElement('span'); d.className='s-dot'+(i===0?' active':''); dotsEl.appendChild(d);
+    var p=document.createElement('div'); p.className='s-prog-item'+(i===0?' done':''); prog.appendChild(p);
+  }
+  function go(n){
+    cur=Math.max(0,Math.min(total-1,n));
+    cards.style.transform='translateX(-'+cur*100+'%)';
+    dotsEl.querySelectorAll('.s-dot').forEach(function(d,i){d.className='s-dot'+(i===cur?' active':'');});
+    prog.querySelectorAll('.s-prog-item').forEach(function(p,i){p.className='s-prog-item'+(i<=cur?' done':'');});
+    counter.textContent=(cur+1)+' / '+total;
+    prev.disabled=cur===0; next.disabled=cur===total-1;
+  }
+  prev.addEventListener('click',function(){go(cur-1);});
+  next.addEventListener('click',function(){go(cur+1);});
+  var sx=0;
+  cards.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  cards.addEventListener('touchend',function(e){var dx=sx-e.changedTouches[0].clientX; if(Math.abs(dx)>40) go(dx>0?cur+1:cur-1);},{passive:true});
+})();
+</script>
 <script src="nav.js"></script>
 </body>
 </html>
